@@ -1,10 +1,8 @@
-// Buttons
-const btnMakeClip           = document.getElementById("btnMakeClip");
+const btnMakeProd           = document.getElementById("btnMakeProd");
 const btnAutoClick          = document.getElementById("btnAutoClick");
 const btnMaterials          = document.getElementById("btnMaterials");
 
-// HTML elements to be incremented
-const ClipNumEle            = document.getElementById("makeClipNum");
+const ProdNumEle            = document.getElementById("prodNum");
 const autoClickNumEle       = document.getElementById("autoClickNum");
 const autoClickPriceEle     = document.getElementById("autoClickPrice");
 const materialNumEle        = document.getElementById("materialNum");
@@ -18,11 +16,11 @@ let materialPrice = 15;
 let materialShipment = 1000;
 let funds = 0;
 
-//setInterval(makeClip(autoClickNum), 1000);
+//setInterval(makeProd(autoClickNum), 1000);
 
-function makeClip(number) {
+function makeProd(number) {
     clickNum = clickNum + number;
-    ClipNumEle.innerHTML = clickNum;
+    ProdNumEle.innerHTML = clickNum;
 
     materialNum = materialNum - number;
     materialNumEle.innerHTML = materialNum;
@@ -59,3 +57,5 @@ function addMaterials() {
 function btnEnable() {
 
 }
+
+console.log("Hello There");
