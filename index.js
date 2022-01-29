@@ -18,6 +18,20 @@ let funds = 0;
 
 //setInterval(makeProd(autoClickNum), 1000);
 
+function btnEnable() {
+    materialNum >= 1 
+        ? btnMakeProd.disabled = false
+        : btnMakeProd.disabled = true;
+
+    funds >= materialPrice 
+        ? btnMaterials.disabled = false
+        : btnMaterials.disabled = true;
+
+    funds >= autoClickPrice
+        ? btnAutoClick.disabled = false
+        : btnAutoClick.disabled = true;
+}
+
 function makeProd(number) {
     clickNum = clickNum + number;
     ProdNumEle.innerHTML = clickNum;
@@ -52,10 +66,6 @@ function addMaterials() {
     fundsEle.innerHTML = funds.toFixed(2);
 
     btnEnable();
-}
-
-function btnEnable() {
-
 }
 
 console.log("Hello There");
