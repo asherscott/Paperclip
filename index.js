@@ -16,8 +16,6 @@ let materialPrice = 15;
 let materialShipment = 1000;
 let funds = 0;
 
-//setInterval(makeProd(autoClickNum), 1000);
-
 function btnEnable() {
     materialNum >= 1 
         ? btnMakeProd.disabled = false
@@ -33,16 +31,19 @@ function btnEnable() {
 }
 
 function makeProd(number) {
-    clickNum = clickNum + number;
-    ProdNumEle.innerHTML = clickNum;
+    if(materialNum > 0) {
+        clickNum = clickNum + number;
+        ProdNumEle.innerHTML = clickNum.toFixed(0);
 
-    materialNum = materialNum - number;
-    materialNumEle.innerHTML = materialNum;
+        materialNum = materialNum - number;
+        materialNumEle.innerHTML = Math.ceil(materialNum);
 
-    funds = funds + 0.25 * number;
-    fundsEle.innerHTML = funds.toFixed(2);
+        funds = funds + 0.25 * number;
+        fundsEle.innerHTML = funds.toFixed(2);
 
-    btnEnable();
+        btnEnable();
+    }
+    
 }
 
 function makeAutoClicker() {
@@ -52,9 +53,11 @@ function makeAutoClicker() {
     funds = funds - autoClickPrice;
     fundsEle.innerHTML = funds.toFixed(2);
 
-    autoClickPrice = 1.1 ** autoClickNum + 5;
+    autoClickPrice = autoClickNum ** 2.7 + 5;
     autoClickPriceEle.innerHTML = autoClickPrice.toFixed(2);
 
+    startInterval();
+    
     btnEnable();
 }
 
@@ -66,6 +69,14 @@ function addMaterials() {
     fundsEle.innerHTML = funds.toFixed(2);
 
     btnEnable();
+}
+
+function startInterval() {
+    setInterval(function() {
+        if(autoClickNum > 0) {
+            makeProd(autoClickNum / 100);
+        }
+    }, 10);
 }
 
 console.log("Hello There");
