@@ -7,7 +7,7 @@ const autoClickNumEle       = document.getElementById("autoClickNum");
 const autoClickPriceEle     = document.getElementById("autoClickPrice");
 const materialNumEle        = document.getElementById("materialNum");
 const fundsEle              = document.getElementById("funds");
-const cpsEle                =document.getElementById("cps");
+const cpsEle                = document.getElementById("cps");
 
 let clickNum = 0;
 let autoClickNum = 0;
@@ -19,8 +19,7 @@ let funds = 0;
 let cpsBig = 0;
 let cpsSmall = 0;
 
-startInterval();
-cps();
+GameStart();
 
 function btnEnable() {
     materialNum >= 1 
@@ -39,13 +38,13 @@ function btnEnable() {
 function makeProd(number) {
     if(materialNum > 0) {
         clickNum = clickNum + number;
-        ProdNumEle.innerHTML = clickNum.toFixed(0);
+        ProdNumEle.innerHTML = `Products: ${clickNum.toFixed(0)}`;
 
         materialNum = materialNum - number;
-        materialNumEle.innerHTML = Math.ceil(materialNum);
+        materialNumEle.innerHTML = `${Math.ceil(materialNum)} units`;
 
         funds = funds + 0.25 * number;
-        fundsEle.innerHTML = funds.toFixed(2);
+        fundsEle.innerHTML = `Available Funds: $ ${funds.toFixed(2)}`;
 
         btnEnable();
     }
@@ -60,7 +59,7 @@ function makeAutoClicker() {
     fundsEle.innerHTML = funds.toFixed(2);
 
     autoClickPrice = (1.2 ** autoClickNum) + 5;
-    autoClickPriceEle.innerHTML = autoClickPrice.toFixed(2);
+    autoClickPriceEle.innerHTML = `Cost: $ ${autoClickPrice.toFixed(2)}`;
     
     btnEnable();
 }
@@ -92,8 +91,13 @@ function cps() {
         }, 500);
 
         let cps = 2 * (cpsBig - cpsSmall);
-        cpsEle.innerHTML = cps.toFixed(0);
+        cpsEle.innerHTML = `Products per second: ${cps.toFixed(0)}`;
     }, 1000);
+}
+
+function GameStart() {
+    startInterval();
+    cps();
 }
 
 console.log("Hello There");

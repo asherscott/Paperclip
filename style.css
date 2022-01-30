@@ -1,5 +1,22 @@
-
-section {
+section > section {
     border-bottom: 2px solid black;
-    width: 50%;
+    width: 90%;
+}
+
+#leftColumn {
+    width: 33.333%;
+    border-right: 2px solid black;
+}
+span {
+    width: 100%;
+}
+@media screen and (max-width: 700px) {
+    #leftColumn {
+        width: 50%;
+    }
+    @media screen and (max-width: 400px) {
+        #leftColumn {
+            width: 100%;
+        }
+    }
 }

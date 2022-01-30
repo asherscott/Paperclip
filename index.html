@@ -7,30 +7,39 @@
     <body>
         <h1>Clicker Game</h1>
 
-        <h2>Products: <span id ="prodNum">0</span></h2>
+        <h2 id ="prodNum">Products: 0</h2>
+
         <button id="btnMakeProd" onclick="makeProd(1)">Make Product</button>
 
-        <section>
-            <h3>Business</h3>
+        <section id="leftColumn">
 
-            <p>Available Funds: $ <span id ="funds">0.00</span></p>
+            <section id="businessSection">
+                <h3>Business</h3>
+    
+                <p id ="funds">Available Funds: $ 0.00</p>
+            </section>
+            
+            <section id="manufacturingSection">
+                <h3>Manufacturing</h3>
+    
+                <p id="cps">Products per second: 0</p>
+                
+                <button id="btnMaterials" onclick="addMaterials()" disabled>Materials</button>
+
+                <span id="materialNum">1000 units</span>
+
+                <p id="materialCost">Cost: $ 15</p>
+    
+                <button id="btnAutoClick" onclick="makeAutoClicker()" disabled>Auto Clicker</button>
+
+                <span id="autoClickNum">0</span>
+
+                <p id="autoClickPrice">Cost: $ 5.00</p>
+            </section>
         </section>
-        
-        <section>
-            <h3>Manufacturing</h3>
-
-            <span>Products per second: <span id="cps">0</span></span>
-            <button id="btnMaterials" onclick="addMaterials()" disabled>Materials</button>
-            <span id="materialNum">1000</span><span> units</span>
-            <p>Cost: $ <span>15</span></p>
-
-            <button id="btnAutoClick" onclick="makeAutoClicker()" disabled>Auto Clicker</button>
-            <span id="autoClickNum">0</span>
-            <p >Cost: $ <span id="autoClickPrice">5.00</span></p>
-        </section>
-
 
         
+
 
 
         <script rel="text/javascript" src="./index.js"></script>
