@@ -7,6 +7,7 @@ const autoClickNumEle       = document.getElementById("autoClickNum");
 const autoClickPriceEle     = document.getElementById("autoClickPrice");
 const materialNumEle        = document.getElementById("materialNum");
 const fundsEle              = document.getElementById("funds");
+const cpsEle                =document.getElementById("cps");
 
 let clickNum = 0;
 let autoClickNum = 0;
@@ -15,6 +16,11 @@ let materialNum = 1000;
 let materialPrice = 15;
 let materialShipment = 1000;
 let funds = 0;
+let cpsBig = 0;
+let cpsSmall = 0;
+
+startInterval();
+cps();
 
 function btnEnable() {
     materialNum >= 1 
@@ -53,10 +59,8 @@ function makeAutoClicker() {
     funds = funds - autoClickPrice;
     fundsEle.innerHTML = funds.toFixed(2);
 
-    autoClickPrice = autoClickNum ** 2.7 + 5;
+    autoClickPrice = (1.2 ** autoClickNum) + 5;
     autoClickPriceEle.innerHTML = autoClickPrice.toFixed(2);
-
-    startInterval();
     
     btnEnable();
 }
@@ -77,6 +81,19 @@ function startInterval() {
             makeProd(autoClickNum / 100);
         }
     }, 10);
+}
+
+function cps() {
+    setInterval(function() {
+        cpsBig = clickNum;
+        
+        setTimeout(function() {
+            cpsSmall = clickNum;
+        }, 500);
+
+        let cps = 2 * (cpsBig - cpsSmall);
+        cpsEle.innerHTML = cps.toFixed(0);
+    }, 1000);
 }
 
 console.log("Hello There");
